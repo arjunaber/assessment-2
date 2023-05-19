@@ -28,7 +28,36 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script>
+        // Fungsi validasi saat form di-submit
+        function validateForm(event) {
+            event.preventDefault(); // Mencegah form untuk submit secara default
 
+            var id = document.getElementById('id').value;
+            var advice = document.getElementById('advice').value;
+            var date = document.getElementById('date').value;
+
+            if (id.trim() === '') {
+                alert('ID tidak boleh kosong');
+                return;
+            }
+
+            if (advice.trim() === '') {
+                alert('Advice tidak boleh kosong');
+                return;
+            }
+
+            if (date.trim() === '') {
+                alert('Date tidak boleh kosong');
+                return;
+            }
+
+            // Form valid, lakukan aksi yang diinginkan
+            // Contoh: Kirim data ke server
+            console.log('Form valid');
+            console.log('ID:', id);
+            console.log('Advice:', advice);
+            console.log('Date:', date);
+        }
 
         $(document).ready(function() {
             // Inisialisasi DataTables
