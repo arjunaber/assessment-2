@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th>Location</th>
+                <th>Abbreviation</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+
+
+        $(document).ready(function() {
+            // Inisialisasi DataTables
+            var dataTable = $('#data-table').DataTable({
+                ajax: {
+                    url: 'https://statsapi.web.nhl.com/api/v1/teams',
+                    dataType: 'json',
+                    dataSrc: 'teams'
+                },
+                columns: [
+                    { data: 'name' },
+                    { data: 'locationName' },
+                    { data: 'abbreviation' }
+                ]
+            });
+
+            // Tambahkan event listener pada saat form di-submit
+            var form = document.getElementById('my-form');
+            form.addEventListener('submit', validateForm);
+        });
+    </script>
+</body>
+</html>
